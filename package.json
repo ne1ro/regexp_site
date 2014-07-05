@@ -9,9 +9,10 @@
     "author": "Alexey Kuznetsov",
     "dependencies": {
         "express": "4.4.x",
-        "async": "0.9.x",
         "mongoose": "3.8.x",
         "coffee-script": "1.7.x",
+        "iced-coffee-script": "1.7.x",
+        "pm2": "0.9.x",
         "lodash": "2.4.x"
     },
     "devDependencies": {
@@ -24,11 +25,11 @@
         "grunt-contrib-cssmin": "0.9.x",
         "grunt-contrib-sass": "0.7.x",
         "grunt-contrib-coffee": "0.10.x",
+        "grunt-contrib-jade": "0.12.x",
         "grunt-contrib-uglify": "0.5.x",
         "grunt-contrib-watch": "0.6.x",
-        "grunt-contrib-jade": "0.12.x",
+        "grunt-nodemon": "0.2.x",
         "grunt-concurrent": "0.5.x",
         "load-grunt-tasks": "0.6.x"
-    },
-    "license": "ISC"
+    }
 }
