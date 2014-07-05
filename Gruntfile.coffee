@@ -60,6 +60,13 @@ module.exports = (grunt) ->
           dest: paths.dist
         ]
 
+    nodemon:
+      dev:
+        script: 'app.coffee'
+        options:
+          watchedExtensions: ['coffee']
+          watchedFolders: [paths.app]
+
     watch:
       scripts:
         files: paths.scripts
@@ -74,7 +81,8 @@ module.exports = (grunt) ->
 
     concurrent:
       dev_build: ['jade:dev', 'concat:dev_scripts']
+      devServer: ['nodemon']
 
 
   # Set custom tasks
-  grunt.registerTask 'default', ['clean:dev', 'coffee', 'concurrent:dev_build', 'watch']
+  grunt.registerTask 'default', ['clean:dev', 'coffee', 'concurrent:dev_build', 'concurrent:devServer']
