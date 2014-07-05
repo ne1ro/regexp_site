@@ -6,12 +6,12 @@ paths =
   client: 'assets'
   dist: 'public'
   scripts: [
-    'app/app.coffee'
-    'app/classes/*.coffee'
-    'app/services/*.coffee'
-    'app/controllers/*.coffee'
-    'app/directives/*.coffee'
-    'app/filters/*.coffee'
+    'assets/app.coffee'
+    'assets/classes/*.coffee'
+    'assets/services/*.coffee'
+    'assets/controllers/*.coffee'
+    'assets/directives/*.coffee'
+    'assets/filters/*.coffee'
   ]
   deps: [
     'bower_components/angular/angular.min.js'
@@ -88,7 +88,7 @@ module.exports = (grunt) ->
 
     concurrent:
       dev_build: ['jade:dev', 'sass:dev', 'concat:dev_scripts']
-      devServer: ['nodemon']
+      devServer: ['nodemon', 'watch']
 
 
   # Set custom tasks
