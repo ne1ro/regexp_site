@@ -35,3 +35,6 @@ node_modules
 
 # Client-side deps
 bower_components/
+
+# Client-side app build
+public/
