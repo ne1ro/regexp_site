@@ -4,7 +4,7 @@
     "description": "Node.js REST API + Angular.js",
     "main": "app.coffee",
     "scripts": {
-        "start": "coffee app.coffee"
+        "start": "grunt"
     },
     "author": "Alexey Kuznetsov",
     "dependencies": {

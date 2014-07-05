@@ -32,3 +32,6 @@ node_modules
 # Trash
 .DS_Store
 .idea/
+
+# Client-side deps
+bower_components/
