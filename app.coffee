@@ -1,12 +1,15 @@
 ######
-#  Main server app file
+# Main server app file
 ######
 express = require 'express'
 app = express()
 
+# Configure Express.js application
 PORT = 3000
+app.use '/', express.static("#{__dirname}/public")
 
-app.get '/', (req, res) ->
-  res.send 'It works!'
+# Send index.html in other routes
+app.all '/*', (req, res) ->
+  res.sendfile 'index.html'
 
 app.listen PORT
