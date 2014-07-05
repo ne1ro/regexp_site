@@ -71,6 +71,7 @@ module.exports = (grunt) ->
       dev:
         script: 'app.coffee'
         options:
+          exec: 'iced'
           watchedExtensions: ['coffee']
           watchedFolders: [paths.app]
 
