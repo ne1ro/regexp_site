@@ -1,9 +1,9 @@
-nav.navbar.navbar-default(role="navigation")
+nav.navbar.navbar-default(role="navigation", ng-controller='NavTabsCtrl')
     .container-fluid
         .collapse.navbar-collapse
             ul.nav.navbar-nav
                 a.navbar-brand Tabs:
             form.navbar-form.navbar-left(role="search")
-                .form-group
+                .form-group(ng-show='tabs')
                     input.form-control(type="text", placeholder="Filter tabs by name")
                 button.btn.btn-default(type="submit") +
