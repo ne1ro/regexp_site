@@ -1,8 +1,22 @@
 doctype
 html
     head
-        title Node.js + Angular.js SPA
+        title(ng-bind='title')
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet' href='css/app.css')
 
     body
+        include views/navbar
+        .container(ng-show='$root.alert', ng-mouseenter="showDescr = true", ng-mouseleave="showDescr = false", class="top-buffer")
+        .alert.alert-dismissable(ng-class="{ 'alert-success': $root.alert.class == 'success', 'alert-info': $root.alert.class == 'info', \
+            'alert-warning': $root.alert.class == 'warning', 'alert-danger': $root.alert.class == 'danger' }")
+            button(type='button', class='close', ng-click='$root.alert = undefined') &times;
+            p.text-center(ng-bind="alert.message")
+
         .container
-            h1 It works
+            .row
+                h1.text-center It works
+            .container.content(ui-view, autoscroll="false")
+
+        .container.content(ui-view, autoscroll="false")

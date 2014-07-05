@@ -60,6 +60,13 @@ module.exports = (grunt) ->
           dest: paths.dist
         ]
 
+    sass:
+      dev:
+        options:
+          style: 'expanded'
+        files:
+          'public/css/app.css' : paths.styles
+
     nodemon:
       dev:
         script: 'app.coffee'
@@ -80,7 +87,7 @@ module.exports = (grunt) ->
           livereload: true
 
     concurrent:
-      dev_build: ['jade:dev', 'concat:dev_scripts']
+      dev_build: ['jade:dev', 'sass:dev', 'concat:dev_scripts']
       devServer: ['nodemon']
 
 

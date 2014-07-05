@@ -32,6 +32,7 @@ node_modules
 # Trash
 .DS_Store
 .idea/
+.sass-cache/
 
 # Client-side deps
 bower_components/
