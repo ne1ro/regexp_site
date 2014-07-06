@@ -3,7 +3,7 @@ app = angular.module("spaApp", [
   'restangular'
 ]).config ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) ->
   # Set HTML5 route mode
-  $locationProvider.html5Mode true
+  # $locationProvider.html5Mode true
 
   # 404
   $urlRouterProvider.otherwise "/"
@@ -12,8 +12,12 @@ app = angular.module("spaApp", [
   RestangularProvider.setBaseUrl '/api'
 
   # Configure routes
-  $stateProvider.state("index",
-    url: "/",
-    templateUrl: "views/main.html",
+  $stateProvider.state("index"
+    url: "/"
+    templateUrl: "views/main.html"
     controller: 'MainCtrl'
+  ).state("tab"
+    url: "/tab/:id"
+    templateUrl: "views/tab.html"
+    controller: 'TabCtrl'
   )

@@ -15,6 +15,7 @@ class NavTabsCtrl extends BaseCtrl
     if title.length > 0
       @Restangular.one('tab').customPOST(title: title).then ((res) =>
         @$scope.tabs.push res
+        @$state.go 'tab', {id: res._id}
       ), (err) =>
         @$log.error 'Tabs POST error', err
 
@@ -23,5 +24,6 @@ class NavTabsCtrl extends BaseCtrl
   remove: (id, index) =>
     @Restangular.one("tab/#{id}").customDELETE().then ( =>
       @$scope.tabs.splice index, 1
+      @$state.go 'index'
     ), (err) =>
       @$log.error 'Tabs DELETE error', err

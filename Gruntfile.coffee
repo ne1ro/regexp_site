@@ -89,7 +89,7 @@ module.exports = (grunt) ->
 
     concurrent:
       dev_build: ['jade:dev', 'sass:dev', 'concat:dev_scripts']
-      devServer: ['nodemon', 'watch']
+      devServer: ['watch', 'nodemon']
 
 
   # Set custom tasks
