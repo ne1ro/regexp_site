@@ -28,18 +28,11 @@ module.exports =
 
   # Update tab data
   update: (req, res) ->
-    Tab.findById req.params.id, (err, tab) ->
+    Tab.update _id: req.params.id, req.body, (err) ->
       if err?
-        res.send 404
+        res.send 500
        else
-        if tab?
-          tab.save (err) ->
-            if err?
-              res.send 500
-             else
-              res.send tab
-        else
-          res.send 404
+        res.send 200
 
 
   # Create new tab
