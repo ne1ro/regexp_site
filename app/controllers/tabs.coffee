@@ -39,7 +39,7 @@ module.exports =
       if err?
         res.send 500
       else
-        res.send 200
+        res.send tab
 
 
   # Destroy tab by id

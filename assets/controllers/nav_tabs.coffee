@@ -12,8 +12,7 @@ class NavTabsCtrl extends BaseCtrl
 
   # Create new tab
   save: (title) =>
-    console.log title
-    if title?
+    if title.length > 0
       @Restangular.one('tab').customPOST(title: title).then ((res) =>
         @$log.debug 'res', res
         @$scope.tabs.push
