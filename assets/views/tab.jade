@@ -27,5 +27,22 @@
 
 
     .col-md-8(ng-show='tab.results.length > 0')
-        h2.text-center Search results
+        h2.text-center(style='margin: 0') Search results
+        hr
+        table.table.table-striped.table-bordered.table-hover
+            thead
+                tr
+                    th #
+                    th Text
+                    th Value
+                    th Position
+            tbody
+                tr(ng-repeat='res in tab.results | limitTo:limit')
+                    td {{$index + 1}}
+                    td
+                        span {{res.text}}
+                    td
+                        span {{res.value}}
+                    td
+                        span {{res.index}}
         hr
