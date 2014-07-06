@@ -22,9 +22,12 @@ class TabCtrl extends BaseCtrl
   # Search web page by regexp
   search: (tabData) ->
     # Put data
-    data = _.pick tabData, 'regex', 'url', 'title', '_id'
-    @Restangular.one("tab/#{data._id}").customPUT(data).then ((res) =>
+    data = _.pick tabData, 'regex', 'url', 'title'
+    @Restangular.one("tab/#{tabData._id}").customPUT(data).then ((res) =>
       if res?
+        data = _.extend data,
+          _id: tabData._id
+
         # Get results by query
         @Restangular.one('result').customPOST(data).then ((tab) =>
           @$scope.tab = tab
