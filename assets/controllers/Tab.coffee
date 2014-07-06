@@ -14,7 +14,7 @@ class TabCtrl extends BaseCtrl
 
       if res.results.length > 0
         @$scope.tab.results = JSON.parse res.results[0].result
-      @$scope.pages = [0 .. Math.floor(@$scope.tab.results.length / 10) - 1]
+      @$scope.pages = [0 .. Math.ceil(@$scope.tab.results.length / 10) - 1]
     ), (err) =>
       @$log.error 'Tab GET error', err
 
@@ -30,7 +30,7 @@ class TabCtrl extends BaseCtrl
           @$scope.tab = tab
           if tab.results.length > 0
             @$scope.tab.results = JSON.parse tab.results[0].result
-          @$scope.pages = [0 .. Math.floor(@$scope.tab.results.length / 10) - 1]
+          @$scope.pages = [0 .. Math.ceil(@$scope.tab.results.length / 10) - 1]
           @$rootScope.$emit 'updateTab'
         ), (err) =>
           @$log.error 'Result POST error', err
