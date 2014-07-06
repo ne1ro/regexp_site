@@ -1,0 +1,31 @@
+.row
+    .col-md-4
+        form(name='tabForm')
+            .row
+                .col-md-4
+                    label Tab title:
+                .col-md-8
+                    input.form-control(ng-model='tab.title', type='text')
+
+            .row.top-buffer
+                .col-md-4
+                    label Website URL:
+                .col-md-8
+                    input.form-control(ng-model='tab.url', type='text', ng-required='', placeholder='http://example.com')
+
+            .row.top-buffer
+                .col-md-4
+                    label Regexp to search:
+                .col-md-8
+                    input.form-control(ng-model='tab.regex', type='text', ng-required='', placeholder='^example$')
+
+            .row.top-buffer
+                .col-md-4
+                .col-md-4
+                    button.btn.btn-success.btn-block(type='button', ng-click='search') Search
+                .col-md-4
+
+
+    .col-md-8(ng-show='results')
+        h2.text-center Search results
+        hr
