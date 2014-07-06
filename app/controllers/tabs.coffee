@@ -45,7 +45,8 @@ module.exports =
   # Destroy tab by id
   destroy: (req, res) =>
     Tab.findById req.params.id, (err, tab) ->
-      if err? or not tab?
+      if err?
         res.send 500
       else
         tab.remove()
+        res.send 200
