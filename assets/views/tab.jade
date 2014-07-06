@@ -37,7 +37,7 @@
                     th Value
                     th Position
             tbody
-                tr(ng-repeat='res in tab.results | limitTo:limit')
+                tr(ng-repeat='res in tab.results | perPage:page')
                     td {{$index + 1}}
                     td
                         span {{res.text}}
@@ -45,4 +45,10 @@
                         span {{res.value}}
                     td
                         span {{res.index}}
-        hr
+        ul.pagination
+            li
+                a(ng-click='page = page - 1', ng-show='page > 0') «
+              li(ng-repeat='pg in pages', ng-class='{active: page == pg}')
+                a(ng-click='setPage(pg)') {{pg + 1}}
+              li
+                a(ng-click='page = page + 1', ng-show='page < pages.length - 1') »

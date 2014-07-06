@@ -11,8 +11,10 @@ class TabCtrl extends BaseCtrl
     # Get tab by id
     @Restangular.one("tab/#{@$stateParams.id}").get().then ((res) =>
       @$scope.tab = res
+
       if res.results.length > 0
         @$scope.tab.results = JSON.parse res.results[0].result
+      @$scope.pages = [0 .. Math.floor(@$scope.tab.results.length / 10) - 1]
     ), (err) =>
       @$log.error 'Tab GET error', err
 
@@ -28,8 +30,14 @@ class TabCtrl extends BaseCtrl
           @$scope.tab = tab
           if tab.results.length > 0
             @$scope.tab.results = JSON.parse tab.results[0].result
+          @$scope.pages = [0 .. Math.floor(@$scope.tab.results.length / 10) - 1]
           @$rootScope.$emit 'updateTab'
         ), (err) =>
           @$log.error 'Result POST error', err
     ), (err) =>
       @$log.error 'Tab PUT error', err
+
+
+  # Set page by id
+  setPage: (id) ->
+    @$scope.page = id
