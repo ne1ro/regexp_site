@@ -2,6 +2,8 @@
 #  Result model
 ######
 mongoose = require 'mongoose'
-module.exports = new mongoose.Schema
+resultSchema =  new mongoose.Schema
   result: String
   extResult: String
+
+module.exports = mongoose.model 'Result', resultSchema

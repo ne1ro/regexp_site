@@ -4,8 +4,10 @@
 mongoose = require 'mongoose'
 result = require './result'
 
-module.exports = new mongoose.Schema
+tabSchema = new mongoose.Schema
   title: String
   regex: String
   url: String
   results: [result]
+
+module.exports = mongoose.model 'Tab', tabSchema
