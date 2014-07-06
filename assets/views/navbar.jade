@@ -4,7 +4,9 @@ nav.navbar.navbar-default(role="navigation", ng-controller='NavTabsCtrl')
             ul.nav.navbar-nav
                 a.navbar-brand Tabs:
                 li(ng-repeat='tab in tabs')
-                    a {{tab.title}}
+                    a
+                        span {{tab.title}}
+                        span.close-btn(ng-click='remove(tab._id)') x
             form.navbar-form.navbar-left(name='tabForm')
                 .form-group
                     input.form-control(type="text", placeholder="Enter the tab name", ng-required='', ng-model='title')

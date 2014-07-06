@@ -1,6 +1,6 @@
 # Navigation tabs
 class NavTabsCtrl extends BaseCtrl
-  @register 'Restangular'
+  @register 'Restangular', '$state'
 
   initialize: ->
     # Get all the tabs
@@ -14,7 +14,6 @@ class NavTabsCtrl extends BaseCtrl
   save: (title) =>
     if title.length > 0
       @Restangular.one('tab').customPOST(title: title).then ((res) =>
-        @$log.debug 'res', res
         @$scope.tabs.push
           title: title
       ), (err) =>
