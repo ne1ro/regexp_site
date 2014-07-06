@@ -40,7 +40,7 @@
                 tr(ng-repeat='res in tab.results | perPage:page')
                     td {{res.pgIndex}}
                     td
-                        span {{res.text}}
+                        span(highlight='res.value') {{res.text}}
                     td
                         span {{res.value}}
                     td
