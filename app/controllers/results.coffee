@@ -6,19 +6,10 @@ result = {}
 results = []
 
 module.exports =
-# Show all tabs
+# Show all results
   index: (req, res) =>
     res.send results
 
 
-# Show only one tab
-  show: (req, res) =>
-    res.send result
-
-
-# Create new tab
+# Create new result
   create: (req, res) =>
-
-
-    # Destroy tab by id
-  destroy: (req, res) =>

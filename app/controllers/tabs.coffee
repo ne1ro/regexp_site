@@ -2,18 +2,18 @@
 #  Tabs actions
 ######
 _ = require 'lodash'
-tab = {}
-tabs = []
+Tab = require '../models/tab'
 
 module.exports =
   # Show all tabs
   index: (req, res) =>
-    res.send tabs
 
 
   # Show only one tab
   show: (req, res) =>
-    res.send tab
+
+  # Update tab data
+  update: (req, res) =>
 
 
   # Create new tab

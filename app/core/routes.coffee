@@ -1,11 +1,12 @@
 ######
-# Routes and resources config
+#  Routes and resources config
 ######
 module.exports = (app) ->
   resources = ['tab', 'result']
   actions =
     'get': 'show'
     'delete': 'destroy'
+    'patch': 'update'
 
   # Extend app with the CRUD actions
   for res in resources
