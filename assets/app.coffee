@@ -25,4 +25,4 @@ app = angular.module("spaApp", [
 ).run ($rootScope, $state) ->
   # Set active state param
   $rootScope.$on '$stateChangeSuccess', (event, state, params) ->
-    $rootScope.state = state
+    $rootScope.stateParams = params

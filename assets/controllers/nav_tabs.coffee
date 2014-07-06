@@ -1,13 +1,21 @@
 # Navigation tabs
 class NavTabsCtrl extends BaseCtrl
-  @register 'Restangular', '$state'
+  @register 'Restangular', '$state', '$rootScope'
 
-  initialize: ->
-    # Get all the tabs
+  # Get all the tabs
+  _getTabs: =>
     @Restangular.all('tabs').getList().then ((res) =>
       @$scope.tabs = res
     ), (err) =>
       @$log.error 'Tabs GET error', err
+
+
+  initialize: ->
+    @_getTabs()
+
+    # Update tab
+    @$rootScope.$on 'updateTab', (event, tab) =>
+      @_getTabs()
 
 
   # Create new tab

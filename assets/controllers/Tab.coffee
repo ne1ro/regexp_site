@@ -2,7 +2,7 @@
 #  Tab controller
 ######
 class TabCtrl extends BaseCtrl
-  @register 'Restangular', '$stateParams'
+  @register 'Restangular', '$stateParams', '$rootScope'
 
   initialize: ->
     # Get tab by id
@@ -18,9 +18,9 @@ class TabCtrl extends BaseCtrl
     @Restangular.one("tab/#{data._id}").customPUT(data).then ((res) =>
       if res?
         # Get results by query
-        @Restangular.one('result').customPOST(data).then ((results) =>
-          if results.length > 0
-            @$scope.results = results
+        @Restangular.one('result').customPOST(data).then ((tab) =>
+          @$scope.tab = tab
+          @$rootScope.$emit 'updateTab'
         ), (err) =>
           @$log.error 'Result POST error', err
     ), (err) =>

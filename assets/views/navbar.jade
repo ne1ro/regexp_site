@@ -3,7 +3,7 @@ nav.navbar.navbar-default(role="navigation", ng-controller='NavTabsCtrl')
         .collapse.navbar-collapse
             ul.nav.navbar-nav
                 a.navbar-brand Tabs:
-                li(ng-repeat='tab in tabs', ng-class='{active: tab.__id == $root.state.id}')
+                li(ng-repeat='tab in tabs', ng-class='{active: tab._id == $root.stateParams.id}')
                     a
                         span(ui-sref='tab({id: tab._id})') {{tab.title}}
                         span.close-btn(ng-click='remove(tab._id, $index)') x
