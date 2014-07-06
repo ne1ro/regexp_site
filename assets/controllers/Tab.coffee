@@ -11,20 +11,23 @@ class TabCtrl extends BaseCtrl
     # Get tab by id
     @Restangular.one("tab/#{@$stateParams.id}").get().then ((res) =>
       @$scope.tab = res
-      @$scope.tab.results = JSON.parse res.results[0].result
+      if res.results.length > 0
+        @$scope.tab.results = JSON.parse res.results[0].result
     ), (err) =>
       @$log.error 'Tab GET error', err
 
 
   # Search web page by regexp
-  search: (data) ->
+  search: (tabData) ->
     # Put data
+    data = _.pick tabData, 'regex', 'url', 'title', '_id'
     @Restangular.one("tab/#{data._id}").customPUT(data).then ((res) =>
       if res?
         # Get results by query
         @Restangular.one('result').customPOST(data).then ((tab) =>
           @$scope.tab = tab
-          @$scope.tab.results = JSON.parse tab.results[0].result
+          if tab.results.length > 0
+            @$scope.tab.results = JSON.parse tab.results[0].result
           @$rootScope.$emit 'updateTab'
         ), (err) =>
           @$log.error 'Result POST error', err

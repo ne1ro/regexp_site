@@ -12,7 +12,8 @@ module.exports =
     # Clear previous results
     Tab.findById req.body._id, (err, tab) ->
       res.send 500 if err?
-      tab.results.splice 0, 1
+      if tab.results.length > 0
+        result.remove() for result in tab.results
 
       # Get HTML by the URL
       request.get req.body.url, (err, response, body) ->
