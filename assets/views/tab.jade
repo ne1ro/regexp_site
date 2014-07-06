@@ -38,7 +38,7 @@
                     th Position
             tbody
                 tr(ng-repeat='res in tab.results | perPage:page')
-                    td {{$index + 1}}
+                    td {{res.pgIndex}}
                     td
                         span {{res.text}}
                     td
