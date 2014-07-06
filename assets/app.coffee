@@ -1,7 +1,7 @@
 app = angular.module("spaApp", [
   'ui.router'
   'restangular'
-]).config ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) ->
+]).config(($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) ->
   # Set HTML5 route mode
   # $locationProvider.html5Mode true
 
@@ -21,3 +21,8 @@ app = angular.module("spaApp", [
     templateUrl: "views/tab.html"
     controller: 'TabCtrl'
   )
+
+).run ($rootScope, $state) ->
+  # Set active state param
+  $rootScope.$on '$stateChangeSuccess', (event, state, params) ->
+    $rootScope.state = state

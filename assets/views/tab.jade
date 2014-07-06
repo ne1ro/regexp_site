@@ -5,7 +5,7 @@
                 .col-md-4
                     label Tab title:
                 .col-md-8
-                    input.form-control(ng-model='tab.title', type='text')
+                    input.form-control(ng-model='tab.title', type='text', ng-required='')
 
             .row.top-buffer
                 .col-md-4
@@ -22,7 +22,7 @@
             .row.top-buffer
                 .col-md-4
                 .col-md-4
-                    button.btn.btn-success.btn-block(type='button', ng-click='search') Search
+                    button.btn.btn-success.btn-block(type='button', ng-click='search(tab)') Search
                 .col-md-4
 
 

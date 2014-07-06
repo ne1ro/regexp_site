@@ -13,7 +13,7 @@ module.exports = (app) ->
       @[res].show request, response
 
     # Update action
-    app.patch "/api/#{res}/:id", (request, response) =>
+    app.put "/api/#{res}/:id", (request, response) =>
       @[res].update request, response
 
     # Destroy action
