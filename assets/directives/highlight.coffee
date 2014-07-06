@@ -5,9 +5,6 @@ class Highlight extends BaseDirective
       'highlight': '='
     restrict: 'A'
     link: (scope, elem, attrs) ->
-      console.log elem.html()
-      for key of elem
-        console.log key
 
 
   @register()
