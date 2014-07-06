@@ -2,24 +2,28 @@
 #  Routes and resources config
 ######
 module.exports = (app) ->
-  resources = ['tab', 'result']
-  actions =
-    'get': 'show'
-    'delete': 'destroy'
-    'patch': 'update'
+  resources = ['result', 'tab']
 
   # Extend app with the CRUD actions
   for res in resources
     @[res] = require "../controllers/#{res}s"
 
-    for verb, action of actions
-      app[verb] "/#{res}/:id.json", (request, response) =>
-        @[res][action] request, response
+    # Show action
+    app.get "/api/#{res}/:id", (request, response) =>
+      @[res].show request, response
+
+    # Update action
+    app.patch "/api/#{res}/:id", (request, response) =>
+      @[res].update request, response
+
+    # Destroy action
+    app.delete "/api/#{res}/:id", (request, response) =>
+      @[res].destroy request, response
 
     # Index action
-    app.get "/#{res}s.json", (request, response) =>
+    app.get "/api/#{res}s", (request, response) =>
       @[res].index request, response
 
     # Create action
-    app.post "/#{res}.json", (request, response) =>
+    app.post "/api/#{res}", (request, response) =>
       @[res].create request, response
