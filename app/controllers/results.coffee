@@ -12,6 +12,7 @@ module.exports =
     # Clear previous results
     Tab.findById req.body._id, (err, tab) ->
       res.send 500 if err?
+      tab.results.splice 0, 1
 
       # Get HTML by the URL
       request.get req.body.url, (err, response, body) ->
@@ -30,11 +31,13 @@ module.exports =
             {
               value: match
               index: indexes[i]
-              body: body
               text: body[lIndex .. rIndex]
             }
 
-          console.log results
+          # Save results
+          tab.results.push result: JSON.stringify(results)
+          tab.save (err, tab) ->
+            if err? then res.send 500 else res.send(tab)
 
         else
           res.send 500
